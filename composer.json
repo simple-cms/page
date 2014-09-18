@@ -1,0 +1,24 @@
+{
+    "name": "simple-cms/page",
+    "description": "",
+    "authors": [
+        {
+            "name": "Tom Green",
+            "email": "tom@beingtomgreen.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations",
+            "src/seeds"
+        ],
+        "psr-0": {
+            "SimpleCms\\Page\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
