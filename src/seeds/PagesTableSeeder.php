@@ -1,6 +1,7 @@
 <?php
 
-use SimpleCms\Page\Page;
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
 
 class PagesTableSeeder extends Seeder {
 
@@ -12,7 +13,7 @@ class PagesTableSeeder extends Seeder {
   public function run()
   {
     // Switch of Eloquent Guarding
-    Eloquent::unguard();
+    Model::unguard();
 
     // An empty variable to hold our Posts
     $posts = [];

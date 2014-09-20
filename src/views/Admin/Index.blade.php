@@ -46,15 +46,16 @@
                 @if(count($pages))
                   @foreach($pages as $page)
                   <tr>
-                    <td><a href="{{ route('control.page.edit', $page->id) }}">{{ $page->title }}</a></td>
+                    <td><a href="{{ route('control.page.edit', [$page->id]) }}">{{ $page->title }}</a></td>
                     <td>{{ $page->updated_at->diffForHumans() }}</td>
                     <td>
-                    {{ Form::open(['route' => ['control.page.destroy', $page->id], 'method' => 'delete', 'class' => '']) }}
+                    {!! Form::open(['route' => ['control.page.destroy', $page->id], 'method' => 'delete', 'class' => '']) !!}
                       <div class="btn-group">
                         <a href="{{ route('control.page.edit', [$page->id]) }}" class="btn btn-info">{{ Lang::get('core::core.edit') }}</a>
-                        {{ Form::submit(Lang::get('core::core.destroy'), ['class' => 'btn btn-danger']) }}
+                        <a href="{{ route('page.show', [$page->slug]) }}" class="btn btn-success" target="_blank">{{ Lang::get('core::core.preview') }}</a>
+                        {!! Form::submit(Lang::get('core::core.destroy'), ['class' => 'btn btn-danger']) !!}
                       </div>
-                    {{ Form::close() }}
+                    {!! Form::close() !!}
                     </td>
                   </tr>
                   @endforeach

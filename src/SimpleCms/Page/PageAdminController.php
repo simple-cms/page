@@ -38,7 +38,7 @@ class PageAdminController extends BaseController {
    */
   public function index()
   {
-    return View::make('page::Admin/List', [
+    return View::make('page::Admin/Index', [
       'pages' => $this->page->all()
     ]);
   }
@@ -58,18 +58,13 @@ class PageAdminController extends BaseController {
    *
    * @return Response
    */
-  public function store()
+  public function store(CreatePageRequest $request)
   {
-    $page = $this->page->store(Input::all());
-
-    if ($page->hasErrors())
-    {
-      return Redirect::route('control.page.create')->withInput()->withErrors($page->getErrors());
-    }
+    $page = $this->page->store($request->all());
 
     return Redirect::route('control.page.index')->with([
       'flash-type' => 'success',
-      'flash-message' => 'Successfully created '. $page->title .'!'
+      'flash-message' => 'Successfully created '. $request->title .'!'
     ]);
   }
 
@@ -90,18 +85,13 @@ class PageAdminController extends BaseController {
    *
    * @return Response
    */
-  public function update($id)
+  public function update(UpdatePageRequest $request)
   {
-    $page = $this->page->update($id, Input::all());
-
-    if ($page->hasErrors())
-    {
-      return Redirect::route('control.page.edit', $page->id)->withInput()->withErrors($page->getErrors());
-    }
+    $page = $this->page->update($request->route->parameter('page'), $request->all());
 
     return Redirect::route('control.page.index')->with([
       'flash-type' => 'success',
-      'flash-message' => 'Successfully updated '. $page->title .'!'
+      'flash-message' => 'Successfully updated '. $request->title .'!'
     ]);
   }
 
