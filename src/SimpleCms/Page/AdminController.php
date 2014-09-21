@@ -1,28 +1,27 @@
 <?php namespace SimpleCms\Page;
 
-use SimpleCms\Page\PageRepositoryInterface;
-use SimpleCms\Core\Controllers\BaseController;
+use SimpleCms\Core\BaseController;
 use View;
 use Input;
 use Redirect;
 
-class PageAdminController extends BaseController {
+class AdminController extends BaseController {
 
   /**
-   * Store our PageRepositoryInterface implementation.
+   * Store our RepositoryInterface implementation.
    *
-   * @var Simple\Page\PageRepositoryInterface
+   * @var Simple\Page\RepositoryInterface
    */
   protected $page;
 
   /**
    * Set up the class
    *
-   * @param Simple\Page\PageRepositoryInterface $page
+   * @param Simple\Page\RepositoryInterface $page
    *
    * @return void
    */
-  public function __construct(PageRepositoryInterface $page)
+  public function __construct(RepositoryInterface $page)
   {
     // Call the parent constructor just in case
     parent::__construct();
@@ -58,7 +57,7 @@ class PageAdminController extends BaseController {
    *
    * @return Response
    */
-  public function store(CreatePageRequest $request)
+  public function store(CreateRequest $request)
   {
     $page = $this->page->store($request->all());
 
@@ -85,7 +84,7 @@ class PageAdminController extends BaseController {
    *
    * @return Response
    */
-  public function update(UpdatePageRequest $request)
+  public function update(UpdateRequest $request)
   {
     $page = $this->page->update($request->route->parameter('page'), $request->all());
 

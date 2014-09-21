@@ -1,10 +1,9 @@
 <?php namespace SimpleCms\Page;
 
 use Illuminate\Database\Eloquent\Model;
-use SimpleCms\Page\RepositoryInterface;
-use SimpleCms\Core\Repositories\AbstractEloquentRepository;
+use SimpleCms\Core\AbstractEloquentRepository;
 
-class EloquentPageRepository extends AbstractEloquentRepository implements PageRepositoryInterface {
+class EloquentRepository extends AbstractEloquentRepository implements RepositoryInterface {
 
   /**
    * @var Model

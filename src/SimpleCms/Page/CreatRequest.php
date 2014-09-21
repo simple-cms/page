@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePageRequest extends FormRequest {
+class CreateRequest extends FormRequest {
 
 	/**
 	 * Get the validation rules that apply to the request.
@@ -18,7 +18,7 @@ class CreatePageRequest extends FormRequest {
       'meta_title' => 'max:70',
       'meta_description' => 'max:155',
       'title' => 'max:100|required',
-      'excerpt' => '',
+      'excerpt' => 'required',
       'content' => 'required'
     ];
 	}

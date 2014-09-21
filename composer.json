@@ -9,7 +9,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.2.*"
+        "illuminate/support": "5.0.*"
     },
     "autoload": {
         "classmap": [
@@ -17,8 +17,8 @@
             "src/seeds"
         ],
         "psr-0": {
-            "SimpleCms\\Page\\": "src/"
+            "SimpleCms\\Page\\": "src"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }

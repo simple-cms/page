@@ -1,26 +1,25 @@
 <?php namespace SimpleCms\Page;
 
-use SimpleCms\Page\PageRepositoryInterface;
-use SimpleCms\Core\Controllers\BaseController;
+use SimpleCms\Core\BaseController;
 use View;
 
-class PagePublicController extends BaseController {
+class PublicController extends BaseController {
 
   /**
-   * Store our PageRepositoryInterface implementation.
+   * Store our RepositoryInterface implementation.
    *
-   * @var Simple\Page\PageRepositoryInterface
+   * @var Simple\Page\RepositoryInterface
    */
   protected $page;
 
   /**
    * Set up the class
    *
-   * @param Simple\Page\PageRepositoryInterface $posts
+   * @param Simple\Page\RepositoryInterface $posts
    *
    * @return void
    */
-  public function __construct(PageRepositoryInterface $page)
+  public function __construct(RepositoryInterface $page)
   {
     // Call the parent constructor just in case
     parent::__construct();

@@ -30,9 +30,9 @@ class PageServiceProvider extends ServiceProvider {
    */
   public function register()
   {
-    $this->app->bind('SimpleCms\Page\PageRepositoryInterface', function($app)
+    $this->app->bind('SimpleCms\Page\RepositoryInterface', function($app)
     {
-      return new EloquentPageRepository(new Page);
+      return new EloquentRepository(new Page);
     });
   }
 

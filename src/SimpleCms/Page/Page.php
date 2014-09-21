@@ -1,6 +1,6 @@
 <?php namespace SimpleCms\Page;
 
-use SimpleCms\Core\Models\BaseModel;
+use SimpleCms\Core\BaseModel;
 
 class Page extends BaseModel {
 
