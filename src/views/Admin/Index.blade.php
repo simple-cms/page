@@ -39,6 +39,7 @@
                 <thead>
                   <tr>
                     <th>{{ Lang::get('core::core.title') }}</th>
+                    <th>{{ Lang::get('core::core.status') }}</th>
                     <th>{{ Lang::get('core::core.updated') }}</th>
                     <th>{{ Lang::get('core::core.actions') }}</th>
                   </tr>
@@ -48,6 +49,11 @@
                   @foreach($pages as $page)
                   <tr>
                     <td><a href="{{ route('control.page.edit', [$page->id]) }}">{{ $page->title }}</a></td>
+                    @if($page->hidden == 1)
+                    <td><span class="badge bg-red">{{ Lang::get('core::core.hidden') }}</span></td>
+                    @else
+                    <td><span class="badge bg-green">{{ Lang::get('core::core.visible') }}</span></td>
+                    @endif
                     <td>{{ $page->updated_at->diffForHumans() }}</td>
                     <td>
                     {!! Form::open(['route' => ['control.page.destroy', $page->id], 'method' => 'delete', 'class' => '']) !!}
@@ -62,7 +68,7 @@
                   @endforeach
                 @else
                   <tr>
-                    <td colspan="4">{{ Lang::get('core::core.missing', ['model' => Lang::get('page::page.plural'), 'link' => link_to_route('control.page.create', 'click here')]) }}
+                    <td colspan="4">{!! Lang::get('core::core.missing', ['model' => Lang::get('page::page.plural'), 'link' => link_to_route('control.page.create', 'click here')]) !!}
                   </tr>
                 @endif
                 </tbody>

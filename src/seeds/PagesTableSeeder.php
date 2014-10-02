@@ -33,7 +33,7 @@ class PagesTableSeeder extends Seeder {
 
       // Generate a fake Post
       $posts[] = [
-        'status' => (bool) rand(0, 1),
+        'hidden' => (bool) rand(0, 1),
         'slug' => $this->faker->slug(),
         'meta_title' => $this->faker->sentence(5),
         'meta_description' => $this->faker->sentence(5),
