@@ -1,6 +1,9 @@
 {
     "name": "simple-cms/page",
-    "description": "",
+    "description": "The Page functionality for SimpleCMS",
+    "keywords": ["simple", "cms", "content managment system"],
+    "license": "MIT",
+    "type": "project",
     "authors": [
         {
             "name": "Tom Green",
@@ -9,15 +12,14 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "5.0.*"
+        "illuminate/support": "5.*"
     },
     "autoload": {
         "classmap": [
-            "src/migrations",
-            "src/seeds"
+            "src/migrations"
         ],
         "psr-0": {
-            "SimpleCms\\Page\\": "src"
+            "SimpleCms\\Page\\": "src/"
         }
     },
     "minimum-stability": "dev"
