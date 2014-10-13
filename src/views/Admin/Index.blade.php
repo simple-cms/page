@@ -75,6 +75,7 @@
                 <tfoot>
                   <tr>
                     <th>{{ Lang::get('core::core.title') }}</th>
+                    <th>{{ Lang::get('core::core.status') }}</th>
                     <th>{{ Lang::get('core::core.updated') }}</th>
                     <th>{{ Lang::get('core::core.actions') }}</th>
                   </tr>
