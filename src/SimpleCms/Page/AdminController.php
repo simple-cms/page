@@ -49,7 +49,9 @@ class AdminController extends BaseController {
    */
   public function create()
   {
-    return View::make('page::Admin/Form');
+    return View::make('page::Admin/Form', [
+      'pages' => $this->page->getSelectArray()
+    ]);
   }
 
   /**
@@ -75,7 +77,8 @@ class AdminController extends BaseController {
   public function edit($id)
   {
     return View::make('page::Admin/Form', [
-      'page' => $this->page->getById($id)
+      'page' => $this->page->getById($id),
+      'pages' => $this->page->getSelectArray()
     ]);
   }
 

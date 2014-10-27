@@ -15,6 +15,7 @@ class CreatePageTable extends Migration {
     {
       $table->increments('id');
       $table->tinyInteger('hidden')->default(0);
+      $table->integer('parent')->nullable();
       $table->string('slug', 80)->unique();
       $table->string('meta_title', 70)->unique();
       $table->string('meta_description', 155)->unique();

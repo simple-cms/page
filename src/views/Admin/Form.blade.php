@@ -60,6 +60,11 @@
                 ], null, ['class' => 'form-control']) !!}
                 {!! $errors->first('hidden', '<p class="text-red">:message</p>') !!}
               </div>
+              <div class="form-group {{ $errors->has('parent_id') ? 'has-error' : '' }}">
+                {!! Form::label('parent_id', Lang::get('page::page.parent')) !!}
+                {!! Form::select('parent_id', $pages, null, ['class' => 'form-control']) !!}
+                {!! $errors->first('parent_id', '<p class="text-red">:message</p>') !!}
+              </div>
               <div class="form-group {{ $errors->has('excerpt') ? 'has-error' : '' }}">
                 {!! Form::label('excerpt', Lang::get('core::core.excerpt')) !!}
                 {!! Form::textarea('excerpt', null, ['class' => 'form-control','rows' => 5]) !!}

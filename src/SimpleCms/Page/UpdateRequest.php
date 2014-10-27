@@ -13,7 +13,8 @@ class UpdateRequest extends FormRequest {
   {
     return [
       'id' => 'numeric',
-      'status' => 'numeric|required',
+      'hidden' => 'numeric|required',
+      'parent_id' => 'numeric',
       'slug' => 'alpha_dash|max:80',
       'meta_title' => 'max:70',
       'meta_description' => 'max:155',
