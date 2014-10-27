@@ -8,6 +8,6 @@
     @endif
   </small></p>
   <blockquote>{{ $page->excerpt }}</blockquote>
-  {{ $page->content }}
+  {!! $page->content !!}
   <hr />
 @stop
