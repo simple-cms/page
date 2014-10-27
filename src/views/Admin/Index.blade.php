@@ -39,6 +39,7 @@
                 <thead>
                   <tr>
                     <th>{{ Lang::get('core::core.title') }}</th>
+                    <th>{{ Lang::get('page::page.parent') }}</th>
                     <th>{{ Lang::get('core::core.status') }}</th>
                     <th>{{ Lang::get('core::core.updated') }}</th>
                     <th>{{ Lang::get('core::core.actions') }}</th>
@@ -49,6 +50,11 @@
                   @foreach($pages as $page)
                   <tr>
                     <td><a href="{{ route('control.page.edit', [$page->id]) }}">{{ $page->title }}</a></td>
+                    @if($page->parent)
+                    <td><a href="{{ route('control.page.edit', [$page->parent->id]) }}">{{ $page->parent->title }}</a></td>
+                    @else
+                    <td>{{ Lang::get('core::core.none') }}</td>
+                    @endif
                     @if($page->hidden == 1)
                     <td><span class="badge bg-red">{{ Lang::get('core::core.hidden') }}</span></td>
                     @else
@@ -75,6 +81,7 @@
                 <tfoot>
                   <tr>
                     <th>{{ Lang::get('core::core.title') }}</th>
+                    <th>{{ Lang::get('page::page.parent') }}</th>
                     <th>{{ Lang::get('core::core.status') }}</th>
                     <th>{{ Lang::get('core::core.updated') }}</th>
                     <th>{{ Lang::get('core::core.actions') }}</th>

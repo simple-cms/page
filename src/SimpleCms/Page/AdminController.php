@@ -38,7 +38,7 @@ class AdminController extends BaseController {
   public function index()
   {
     return View::make('page::Admin/Index', [
-      'pages' => $this->page->all()
+      'pages' => $this->page->all(['parent'])
     ]);
   }
 
