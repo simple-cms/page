@@ -38,7 +38,7 @@ class PublicController extends BaseController {
     return View::make('page::Public/Show', [
       'metaTitle' => 'slug page title',
       'metaDesciption' => 'slug page description',
-      'page' => $this->page->getFirstBy('slug', $slug)
+      'page' => $this->page->getFirstBy('slug', $slug, ['children', 'parent'])
     ]);
   }
 
