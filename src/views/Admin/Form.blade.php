@@ -8,7 +8,7 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> {{ Lang::get('core::core.dashboard') }}</a></li>
-      <li><a href="{{ route('control.page.index') }}">{{ Lang::get('page::page.plural') }}</a></li>
+      <li><a href="{{ route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.index') }}">{{ Lang::get('page::page.plural') }}</a></li>
       <li class="active">{{ isset($page) ? Lang::get('core::core.editing', ['model' => Lang::get('page::page.singular'), 'name' => $page->title]) : Lang::get('core::core.create') .' '. Lang::get('page::page.singular') }}</li>
     </ol>
   </section>
@@ -41,10 +41,10 @@
           <div class="tab-content">
             <div class="tab-pane active" id="basic">
             @if (isset($page))
-              {!! Form::model($page, ['method' => 'PUT', 'route' => ['control.page.update', $page->id], 'role' => 'form']) !!}
+              {!! Form::model($page, ['method' => 'PUT', 'route' => [Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.update', $page->id], 'role' => 'form']) !!}
               {!! Form::hidden('author_id', '1') !!}
             @else
-              {!! Form::open(['method' => 'POST', 'route' => 'control.page.store', 'role' => 'form']) !!}
+              {!! Form::open(['method' => 'POST', 'route' => Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.store', 'role' => 'form']) !!}
               {!! Form::hidden('author_id', '1') !!}
             @endif
               <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">

@@ -1,9 +1,10 @@
 <?php namespace SimpleCms\Page;
 
-use SimpleCms\Core\BaseController;
 use View;
 use Input;
+use Config;
 use Redirect;
+use SimpleCms\Core\BaseController;
 
 class AdminController extends BaseController {
 
@@ -63,7 +64,7 @@ class AdminController extends BaseController {
   {
     $page = $this->page->store($request->all());
 
-    return Redirect::route('control.page.index')->with([
+    return Redirect::route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.index')->with([
       'flash-type' => 'success',
       'flash-message' => 'Successfully created '. $request->title .'!'
     ]);
@@ -89,9 +90,9 @@ class AdminController extends BaseController {
    */
   public function update(UpdateRequest $request)
   {
-    $page = $this->page->update($request->route->parameter('page'), $request->all());
+    $page = $this->page->update($request->route()->getParameter(Config::get('page::pageURL')), $request->all());
 
-    return Redirect::route('control.page.index')->with([
+    return Redirect::route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.index')->with([
       'flash-type' => 'success',
       'flash-message' => 'Successfully updated '. $request->title .'!'
     ]);
@@ -108,13 +109,13 @@ class AdminController extends BaseController {
 
     if ($page)
     {
-      return Redirect::route('control.page.index')->with([
+      return Redirect::route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.index')->with([
         'flash-type' => 'success',
         'flash-message' => 'Page successfully deleted!'
       ]);
     }
 
-    return Redirect::route('control.page.index')->with([
+    return Redirect::route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.index')->with([
       'flash-type' => 'error',
       'flash-message' => 'Failed to delete page!'
     ]);
