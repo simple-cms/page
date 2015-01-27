@@ -5,20 +5,25 @@ use Illuminate\Support\ServiceProvider;
 class PageServiceProvider extends ServiceProvider {
 
   /**
-   * Indicates if loading of the provider is deferred.
-   *
-   * @var bool
-   */
-  protected $defer = false;
-
-  /**
    * Bootstrap the application events.
    *
    * @return void
    */
   public function boot()
   {
-    $this->package('simple-cms/page');
+    // Register our package views
+    $this->loadViewsFrom('page', __DIR__.'/../../views');
+
+    // Register our package translation files
+    $this->loadTranslationsFrom('page', __DIR__.'/../../lang');
+
+    // Register the files our package should publish
+    $this->publishes([
+      // Publish our views
+      __DIR__.'/../../views' => base_path('resources/views/vendor/page'),
+      // Publish our config
+      __DIR__.'/../../config/page.php' => config_path('page.php'),
+    ]);
 
     require __DIR__.'/../../routes.php';
   }
@@ -43,7 +48,7 @@ class PageServiceProvider extends ServiceProvider {
    */
   public function provides()
   {
-    return array();
+    return [];
   }
 
 }
