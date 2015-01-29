@@ -64,7 +64,7 @@ class AdminController extends BaseController {
   {
     $page = $this->page->store($request->all());
 
-    return Redirect::route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.index')->with([
+    return Redirect::route(config('core.adminURL') .'.'. config('page.pageURL') .'.index')->with([
       'flash-type' => 'success',
       'flash-message' => 'Successfully created '. $request->title .'!'
     ]);
@@ -90,9 +90,9 @@ class AdminController extends BaseController {
    */
   public function update(UpdateRequest $request)
   {
-    $page = $this->page->update($request->route()->getParameter(Config::get('page::pageURL')), $request->all());
+    $page = $this->page->update($request->route()->getParameter(config('page.pageURL')), $request->all());
 
-    return Redirect::route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.index')->with([
+    return Redirect::route(config('core.adminURL') .'.'. config('page.pageURL') .'.index')->with([
       'flash-type' => 'success',
       'flash-message' => 'Successfully updated '. $request->title .'!'
     ]);
@@ -109,13 +109,13 @@ class AdminController extends BaseController {
 
     if ($page)
     {
-      return Redirect::route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.index')->with([
+      return Redirect::route(config('core.adminURL') .'.'. config('page.pageURL') .'.index')->with([
         'flash-type' => 'success',
         'flash-message' => 'Page successfully deleted!'
       ]);
     }
 
-    return Redirect::route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.index')->with([
+    return Redirect::route(config('core.adminURL') .'.'. config('page.pageURL') .'.index')->with([
       'flash-type' => 'error',
       'flash-message' => 'Failed to delete page!'
     ]);

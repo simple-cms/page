@@ -8,7 +8,7 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> {{ Lang::get('core::core.dashboard') }}</a></li>
-      <li><a href="{{ route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.index') }}">{{ Lang::get('page::page.plural') }}</a></li>
+      <li><a href="{{ route(config('core.adminURL') .'.'. config('page.pageURL') .'.index') }}">{{ Lang::get('page::page.plural') }}</a></li>
       <li class="active">{{ Lang::get('page::page.singular') }} {{ Lang::get('core::core.list') }}</li>
     </ol>
   </section>
@@ -29,7 +29,7 @@
               {{ Lang::get('core::core.actions') }} <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.create') }}"><i class="fa fa-pencil-square-o"></i> {{ Lang::get('core::core.create') }} {{ Lang::get('page::page.singular') }}</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route(config('core.adminURL') .'.'. config('page.pageURL') .'.create') }}"><i class="fa fa-pencil-square-o"></i> {{ Lang::get('core::core.create') }} {{ Lang::get('page::page.singular') }}</a></li>
               </ul>
             </li>
           </ul>
@@ -49,9 +49,9 @@
                 @if(count($pages))
                   @foreach($pages as $page)
                   <tr>
-                    <td><a href="{{ route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.edit', [$page->id]) }}">{{ $page->title }}</a></td>
+                    <td><a href="{{ route(config('core.adminURL') .'.'. config('page.pageURL') .'.edit', [$page->id]) }}">{{ $page->title }}</a></td>
                     @if($page->parent)
-                    <td><a href="{{ route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.edit', [$page->parent->id]) }}">{{ $page->parent->title }}</a></td>
+                    <td><a href="{{ route(config('core.adminURL') .'.'. config('page.pageURL') .'.edit', [$page->parent->id]) }}">{{ $page->parent->title }}</a></td>
                     @else
                     <td>{{ Lang::get('core::core.none') }}</td>
                     @endif
@@ -62,9 +62,9 @@
                     @endif
                     <td>{{ $page->updated_at->diffForHumans() }}</td>
                     <td>
-                    {!! Form::open(['route' => [Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.destroy', $page->id], 'method' => 'delete', 'class' => '']) !!}
+                    {!! Form::open(['route' => [config('core.adminURL') .'.'. config('page.pageURL') .'.destroy', $page->id], 'method' => 'delete', 'class' => '']) !!}
                       <div class="btn-group">
-                        <a href="{{ route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.edit', [$page->id]) }}" class="btn btn-info">{{ Lang::get('core::core.edit') }}</a>
+                        <a href="{{ route(config('core.adminURL') .'.'. config('page.pageURL') .'.edit', [$page->id]) }}" class="btn btn-info">{{ Lang::get('core::core.edit') }}</a>
                         <a href="{{ route('page.show', [$page->slug]) }}" class="btn btn-success" target="_blank">{{ Lang::get('core::core.preview') }}</a>
                         {!! Form::submit(Lang::get('core::core.destroy'), ['class' => 'btn btn-danger']) !!}
                       </div>
@@ -74,7 +74,7 @@
                   @endforeach
                 @else
                   <tr>
-                    <td colspan="4">{!! Lang::get('core::core.missing', ['model' => Lang::get('page::page.plural'), 'link' => link_to_route(Config::get('core::adminURL') .'.'. Config::get('page::pageURL') .'.create', 'click here')]) !!}
+                    <td colspan="4">{!! Lang::get('core::core.missing', ['model' => Lang::get('page::page.plural'), 'link' => link_to_route(config('core.adminURL') .'.'. config('page.pageURL') .'.create', 'click here')]) !!}
                   </tr>
                 @endif
                 </tbody>
