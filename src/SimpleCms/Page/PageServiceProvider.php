@@ -12,10 +12,10 @@ class PageServiceProvider extends ServiceProvider {
   public function boot()
   {
     // Register our package views
-    $this->loadViewsFrom('page', __DIR__.'/../../views');
+    $this->loadViewsFrom(__DIR__.'/../../views', 'page');
 
     // Register our package translation files
-    $this->loadTranslationsFrom('page', __DIR__.'/../../lang');
+    $this->loadTranslationsFrom(__DIR__.'/../../lang', 'page');
 
     // Register the files our package should publish
     $this->publishes([
