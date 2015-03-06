@@ -1,6 +1,5 @@
 <?php namespace SimpleCms\Page;
 
-use View;
 use Input;
 use Config;
 use Redirect;
@@ -38,7 +37,7 @@ class AdminController extends BaseController {
    */
   public function index()
   {
-    return View::make('page::Admin/Index', [
+    return view('page::Admin/Index', [
       'pages' => $this->page->all(['parent'])
     ]);
   }
@@ -50,7 +49,7 @@ class AdminController extends BaseController {
    */
   public function create()
   {
-    return View::make('page::Admin/Form', [
+    return view('page::Admin/Form', [
       'pages' => $this->page->getSelectArray()
     ]);
   }
@@ -77,7 +76,7 @@ class AdminController extends BaseController {
    */
   public function edit($id)
   {
-    return View::make('page::Admin/Form', [
+    return view('page::Admin/Form', [
       'page' => $this->page->getById($id),
       'pages' => $this->page->getSelectArray()
     ]);
