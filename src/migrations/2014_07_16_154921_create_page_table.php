@@ -11,7 +11,7 @@ class CreatePageTable extends Migration {
    */
   public function up()
   {
-    Schema::create('pages', function($table)
+    Schema::create('page', function($table)
     {
       $table->increments('id');
       $table->tinyInteger('hidden')->default(0);
@@ -33,7 +33,7 @@ class CreatePageTable extends Migration {
    */
   public function down()
   {
-    Schema::dropIfExists('pages');
+    Schema::dropIfExists('page');
   }
 
 }

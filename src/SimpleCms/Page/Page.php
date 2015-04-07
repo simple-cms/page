@@ -2,7 +2,9 @@
 
 use SimpleCms\Core\BaseModel;
 
-class Page extends BaseModel {
+class Page extends BaseModel
+{
+  protected $table = 'page';
 
   protected $fillable = [
     'hidden',
